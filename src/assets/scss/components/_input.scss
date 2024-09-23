@@ -1,0 +1,32 @@
+select {
+  appearance: none;
+}
+
+input,
+select {
+  height: 3.5rem;
+  font-size: 1.3rem;
+  padding-inline: 1rem;
+  box-sizing: border-box;
+  border: 0.1rem solid #e8e8e9;
+  border-radius: 0.6rem;
+
+  background-color: var(--color-white);
+  color: var(--text-input-color);
+
+  &::placeholder {
+    color: #4e5964;
+  }
+
+  &:focus {
+    @include focus-element(#4158d0, 0.1rem, border);
+  }
+
+  &[error] {
+    border-color: var(--text-error-color);
+  }
+
+  &[error]:focus {
+    @include focus-element(#d33f3f, 0.1rem, border);
+  }
+}

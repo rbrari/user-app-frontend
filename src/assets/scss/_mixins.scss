@@ -1,0 +1,59 @@
+@mixin scrollbar-on-hover(
+  $width: 0.6rem,
+  $track: var(--color-light-grey),
+  $thumb: var(--color-grey)
+) {
+  @include small-scrollbar($width, transparent, transparent);
+
+  &::-webkit-scrollbar {
+    visibility: hidden;
+  }
+
+  &:hover {
+    @include small-scrollbar($width, $track, $thumb);
+  }
+}
+
+@mixin small-scrollbar(
+  $width: 0.6rem,
+  $track: var(--color-light-grey),
+  $thumb: var(--color-grey)
+) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $track;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb;
+    border-radius: 20rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, $thumb, #000 10%);
+  }
+}
+
+@mixin focus-element(
+  $color: #4159d0,
+  $spread: 0.2rem,
+  $type: border,
+  $type-width: 0.1rem
+) {
+  $box-shadow-color: rgba($color, 0.25);
+  $border-outline-color: rgba($color, 0.45);
+
+  @if $spread > 0 {
+    box-shadow: 0 0 0 $spread #{$box-shadow-color} !important;
+  }
+
+  @if $type == border {
+    border: $type-width solid #{$border-outline-color} !important;
+  } @else if ($type == outline) {
+    outline: $type-width solid #{$border-outline-color} !important;
+  }
+}

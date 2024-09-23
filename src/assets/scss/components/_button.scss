@@ -1,0 +1,67 @@
+.base-btn {
+  --background-color: var(--color-light-grey);
+  --color: var(--text-color);
+  --font-weight: 400;
+  --font-size: 1.3rem;
+  --padding: 0.6rem 1.6rem;
+  --border-color: transparent;
+  --border-radius: 0.5rem;
+
+  border: 0.1rem solid var(--border-color);
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+
+  color: var(--color);
+  background-color: var(--background-color);
+
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  min-width: max-content;
+  width: max-content;
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+
+  transition: all 0.15s ease-in-out;
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: color-mix(in srgb, var(--background-color), #000 7%);
+  }
+
+  &:focus {
+    @include focus-element($type: none);
+  }
+
+  &--primary {
+    --background-color: var(--color-primary);
+    --color: var(--color-white);
+  }
+
+  &--action {
+    --color: #9e9ea0;
+    --background-color: transparent;
+    --border-color: transparent;
+    --padding: 0.5rem;
+    --border-radius: 5rem;
+
+    &:hover:not(:disabled),
+    &:focus:not(:disabled),
+    &:active:not(:disabled) {
+      color: #535a60;
+    }
+
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+}

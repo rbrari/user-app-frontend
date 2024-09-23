@@ -1,0 +1,29 @@
+:root {
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+}
+
+* {
+  outline: none;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--background-color);
+  overflow: auto;
+  overflow: overlay;
+  padding: 2.4rem;
+  @include scrollbar-on-hover;
+
+  &:has(.base-modal[open]) {
+    overflow: hidden;
+  }
+}
