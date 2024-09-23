@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import UsersList from '@/views/UsersList.vue';
+  import Users from '@/modules/User/Index.vue';
 </script>
 
 <template>
-  <UsersList />
+  <Users />
 </template>

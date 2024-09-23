@@ -1,0 +1,39 @@
+:root {
+  --primary-hue: #3a86ff;
+  --primary-hue-hover: #2f5dc1;
+  --secondary-hue: #8338ec;
+  --highlight-hue: #ff006e;
+  --background-base-light: #f7f7f7;
+  --background-base-dark: #1d1d1d;
+  --text-base-light: rgba(0, 0, 0, 0.87);
+  --text-base-dark: rgba(255, 255, 255, 0.87);
+  --border-base-light: #dcdcdc;
+  --border-base-dark: #353535;
+
+  --shadow-light-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-light-md: 0 3px 6px rgba(0, 0, 0, 0.1);
+  --shadow-light-lg: 0 5px 10px rgba(0, 0, 0, 0.15);
+  --shadow-dark-sm: 0 1px 2px rgba(255, 255, 255, 0.05);
+  --shadow-dark-md: 0 3px 6px rgba(255, 255, 255, 0.1);
+  --shadow-dark-lg: 0 5px 10px rgba(255, 255, 255, 0.15);
+
+  --scrollbar-bg: #f4f4f4;
+  --scrollbar-thumb-bg: #bbbbbd;
+
+  /* Dark Mode Adjustments */
+  @media (prefers-color-scheme: dark) {
+    --background-base-light: #1d1d1d;
+    --background-base-dark: #f7f7f7;
+    --text-base-light: rgba(255, 255, 255, 0.87);
+    --text-base-dark: rgba(0, 0, 0, 0.87);
+    --border-base-light: #353535;
+    --border-base-dark: #dcdcdc;
+
+    --shadow-light-sm: 0 1px 2px rgba(255, 255, 255, 0.05);
+    --shadow-light-md: 0 3px 6px rgba(255, 255, 255, 0.1);
+    --shadow-light-lg: 0 5px 10px rgba(255, 255, 255, 0.15);
+    --shadow-dark-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-dark-md: 0 3px 6px rgba(0, 0, 0, 0.1);
+    --shadow-dark-lg: 0 5px 10px rgba(0, 0, 0, 0.15);
+  }
+}

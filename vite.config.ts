@@ -22,7 +22,12 @@ export default defineConfig(async () => {
     },
     test: {
       globals: true,
-      environment: 'jsdom'
+      environment: 'jsdom',
+      coverage: {
+        provider: 'c8',
+        reporter: ['text', 'json', 'html']
+      },
+      include: ['**/tests/**/*.spec.{ts,tsx,js,jsx}']
     }
   };
 });
