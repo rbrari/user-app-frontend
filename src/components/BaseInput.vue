@@ -31,7 +31,7 @@
 </script>
 
 <template>
-  <div class="form-group">
+  <div class="base-input">
     <label :for="id">{{ label }}</label>
     <select :id v-if="type === InputType.SELECT">
       <option

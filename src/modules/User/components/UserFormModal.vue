@@ -90,7 +90,12 @@
 </script>
 
 <template>
-  <BaseModal title="User Form" v-model:isOpen="isOpen" @onSave="onSave">
+  <BaseModal
+    id="user-form-modal"
+    title="User Form"
+    v-model:isOpen="isOpen"
+    @onSave="onSave"
+  >
     <div class="form">
       <BaseInput
         id="name"

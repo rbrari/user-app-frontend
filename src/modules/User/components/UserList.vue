@@ -39,7 +39,7 @@
 </script>
 
 <template>
-  <div class="users-list">
+  <div id="users-list">
     <h2>Users</h2>
     <BaseTable
       :columns="columns"

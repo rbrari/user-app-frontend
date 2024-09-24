@@ -36,7 +36,7 @@
       </main>
       <footer class="base-modal__footer">
         <button @click="open = false">Cancel</button>
-        <button id="base-modal-submit" @click="emits('onSave')">Save</button>
+        <button @click="emits('onSave')">Save</button>
       </footer>
     </div>
   </dialog>

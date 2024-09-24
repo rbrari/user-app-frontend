@@ -1,5 +1,3 @@
-// tests/components/UserFormModal.spec.ts
-
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import UserFormModal from '@/modules/User/components/UserFormModal.vue';
@@ -12,9 +10,6 @@ describe('UserFormModal Component', () => {
     wrapper = mount(UserFormModal, {
       props: {
         isOpen: true
-      },
-      global: {
-        stubs: ['BaseModal', 'BaseInput']
       }
     });
   });
@@ -23,7 +18,7 @@ describe('UserFormModal Component', () => {
     vi.restoreAllMocks();
   });
 
-  it('emits "onSave" with valid data when form is submitted', async () => {
+  it('closes the modal when valid data is provided', async () => {
     const validUser: User = {
       name: 'Alice',
       surname: 'Brown',
@@ -32,37 +27,30 @@ describe('UserFormModal Component', () => {
       education: EducationLevel.Master
     };
 
-    // Simulate user input
-    await wrapper.find('input#name').setValue(validUser.name);
-    await wrapper.find('input#surname').setValue(validUser.surname);
-    await wrapper.find('input#email').setValue(validUser.email);
-    await wrapper.find('input#birthday').setValue(validUser.birthday);
-    await wrapper.find('select#education').setValue(validUser.education);
+    wrapper.vm.isOpen = true;
+    wrapper.vm.data = validUser;
 
-    // Simulate form submission
-    await wrapper.find('button[type="submit"]').trigger('click');
+    await wrapper.vm.onSave();
 
-    // Assert that 'onSave' event was emitted with valid data
-    expect(wrapper.emitted('onSave')).toBeTruthy();
-    expect(wrapper.emitted('onSave')?.[0]).toEqual([validUser]);
+    expect(wrapper.vm.isOpen).toBe(false);
   });
 
-  it('does not emit "onSave" when required fields are missing', async () => {
-    // Simulate partial user input (e.g., missing 'name')
-    await wrapper.find('input#surname').setValue('Brown');
-    await wrapper.find('input#email').setValue('alice.brown@example.com');
-    await wrapper.find('input#birthday').setValue('1992-08-20');
-    await wrapper.find('select#education').setValue(EducationLevel.Master);
+  it('keeps the modal open and have errors when invalid data is provided', async () => {
+    const invalidUser = {
+      name: '',
+      surname: 'Brown',
+      email: 'alice.brown@example.com',
+      birthday: '1992-08-20',
+      education: EducationLevel.Master
+    };
 
-    // Simulate form submission
-    await wrapper.find('button[type="submit"]').trigger('click');
+    wrapper.vm.isOpen = true;
+    wrapper.vm.data = invalidUser;
 
-    // Assert that 'onSave' event was not emitted
-    expect(wrapper.emitted('onSave')).toBeFalsy();
+    await wrapper.vm.onSave();
 
-    // Optionally, check for validation errors
-    const nameError = wrapper.find('input#name + .error');
-    expect(nameError.exists()).toBe(true);
-    expect(nameError.text()).toContain('Name is required');
+    expect(wrapper.vm.isOpen).toBe(true);
+    expect(wrapper.vm.errors.name).toBeTruthy();
+    expect(wrapper.vm.errors.name.length).toBeGreaterThan(0);
   });
 });

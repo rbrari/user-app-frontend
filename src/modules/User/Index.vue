@@ -45,7 +45,7 @@
 </script>
 
 <template>
-  <div class="users">
+  <div>
     <UserList
       :users="userStore.filteredUsers"
       @onAction="onUserListAction"
