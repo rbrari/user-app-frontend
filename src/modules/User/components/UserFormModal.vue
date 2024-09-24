@@ -159,6 +159,10 @@
 
     .base-input {
       width: calc(50% - 1.2rem);
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
     }
   }
 </style>

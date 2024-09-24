@@ -78,11 +78,14 @@
 
 <style lang="scss" scoped>
   .base-table {
+    overflow: auto;
+    @include scrollbar-on-hover;
+
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.8rem;
+      margin-block: 0.8rem;
     }
 
     table {

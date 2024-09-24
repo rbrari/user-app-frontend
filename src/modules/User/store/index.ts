@@ -32,14 +32,10 @@ export const useUserStore = defineStore('user', () => {
     setInitialData();
     const rawData = localStorage.getItem('users');
     const data = JSON.parse(rawData ?? '[]');
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     users.value = data;
   }
 
   async function saveUsers() {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
     localStorage.setItem('users', JSON.stringify(users.value));
   }
 

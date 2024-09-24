@@ -58,3 +58,11 @@
     </BaseTable>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  #users-list {
+    :deep(table) {
+      min-width: 88rem;
+    }
+  }
+</style>

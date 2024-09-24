@@ -57,6 +57,10 @@
     top: 50%;
     transform: translateY(-50%);
 
+    @media screen and (max-width: 768px) {
+      width: 80%;
+    }
+
     &__overlay {
       display: none;
       position: fixed;
@@ -79,9 +83,9 @@
     &__content {
       display: flex;
       flex-direction: column;
-      max-height: 50rem;
       overflow: auto;
       padding: 1.6rem;
+      max-height: calc(100vh - 20rem);
       @include scrollbar-on-hover;
     }
 

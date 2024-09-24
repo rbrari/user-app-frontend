@@ -22,4 +22,8 @@ body {
   overflow: overlay;
   padding: 2.4rem;
   @include scrollbar-on-hover;
+
+  &:has(.base-modal[open]) {
+    overflow: hidden;
+  }
 }
