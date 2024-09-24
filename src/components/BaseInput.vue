@@ -32,7 +32,9 @@
 
 <template>
   <div class="base-input">
-    <label :for="id">{{ label }}</label>
+    <label :for="id">
+      {{ label }} <template v-if="isRequired">*</template>
+    </label>
     <select :id v-if="type === InputType.SELECT">
       <option
         v-for="option in options"
@@ -45,10 +47,38 @@
     <input
       v-else
       v-model="data[id]"
+      :error="!!errors.length && isTouched ? errors[0] : undefined"
       @blur="emits('markFieldAsTouched')"
       :type
       :id
     />
-    <span class="error" v-if="errors.length && isTouched">{{ errors[0] }}</span>
+    <span class="base-input__error" v-if="errors.length && isTouched">{{
+      errors[0]
+    }}</span>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .base-input {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--color-black);
+    }
+
+    padding-bottom: 1.6rem;
+
+    &__error {
+      position: absolute;
+      bottom: 0;
+      font-size: 1rem;
+      color: var(--text-error-color);
+    }
+  }
+</style>

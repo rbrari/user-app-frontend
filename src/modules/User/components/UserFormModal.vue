@@ -66,16 +66,22 @@
     isOpen.value = true;
   }
 
-  function onSave() {
+  function validateData() {
     const result = userSchema.safeParse(data.value);
+    errors.value = result.error?.flatten().fieldErrors ?? {};
+    return result;
+  }
 
-    console.log(result, 'onSave');
+  function onFieldChange(fieldName: keyof UserForm) {
+    markFieldAsTouched(fieldName);
+    validateData();
+  }
+
+  function onSave() {
+    const result = validateData();
     markForm();
 
-    if (!result.success) {
-      errors.value = result.error.flatten().fieldErrors;
-    } else {
-      errors.value = {};
+    if (!Object.values(errors.value).length) {
       emits('onSave', {
         ...data.value,
         ...result.data
@@ -90,28 +96,25 @@
 </script>
 
 <template>
-  <BaseModal
-    id="user-form-modal"
-    title="User Form"
-    v-model:isOpen="isOpen"
-    @onSave="onSave"
-  >
-    <div class="form">
+  <BaseModal title="User Form" v-model:isOpen="isOpen" @onSave="onSave">
+    <div class="user-form">
       <BaseInput
         id="name"
         label="First Name"
         :errors="errors.name || []"
         :isTouched="touchedFields.name"
+        isRequired
         v-model:data="data"
-        @markFieldAsTouched="markFieldAsTouched('name')"
+        @markFieldAsTouched="onFieldChange('name')"
       />
       <BaseInput
         id="surname"
         label="Last Name"
         :errors="errors.surname || []"
         :isTouched="touchedFields.surname"
+        isRequired
         v-model:data="data"
-        @markFieldAsTouched="markFieldAsTouched('surname')"
+        @markFieldAsTouched="onFieldChange('surname')"
       />
       <BaseInput
         id="email"
@@ -119,9 +122,11 @@
         :type="InputType.EMAIL"
         :errors="errors.email || []"
         :isTouched="touchedFields.email"
+        isRequired
         v-model:data="data"
-        @markFieldAsTouched="markFieldAsTouched('email')"
+        @markFieldAsTouched="onFieldChange('email')"
       />
+      <br />
       <BaseInput
         id="birthday"
         label="Birthday"
@@ -129,7 +134,7 @@
         :errors="errors.birthday || []"
         :isTouched="touchedFields.birthday"
         v-model:data="data"
-        @markFieldAsTouched="markFieldAsTouched('birthday')"
+        @markFieldAsTouched="onFieldChange('birthday')"
       />
       <BaseInput
         id="education"
@@ -139,45 +144,21 @@
         :errors="errors.education || []"
         :isTouched="touchedFields.education"
         v-model:data="data"
-        @markFieldAsTouched="markFieldAsTouched('education')"
+        @markFieldAsTouched="onFieldChange('education')"
       />
     </div>
   </BaseModal>
 </template>
 
-<style scoped>
-  .form {
+<style lang="scss" scoped>
+  .user-form {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+    flex-direction: row;
+    gap: 0.8rem 2.4rem;
+    flex-wrap: wrap;
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .form-group label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-
-  .form-group input,
-  .form-group select {
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-
-  .error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
-
-  button[type='submit'] {
-    align-self: flex-end;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
+    .base-input {
+      width: calc(50% - 1.2rem);
+    }
   }
 </style>

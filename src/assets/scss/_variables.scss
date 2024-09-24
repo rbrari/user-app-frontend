@@ -1,39 +1,28 @@
 :root {
-  --primary-hue: #3a86ff;
-  --primary-hue-hover: #2f5dc1;
-  --secondary-hue: #8338ec;
-  --highlight-hue: #ff006e;
-  --background-base-light: #f7f7f7;
-  --background-base-dark: #1d1d1d;
-  --text-base-light: rgba(0, 0, 0, 0.87);
-  --text-base-dark: rgba(255, 255, 255, 0.87);
-  --border-base-light: #dcdcdc;
-  --border-base-dark: #353535;
-
-  --shadow-light-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-light-md: 0 3px 6px rgba(0, 0, 0, 0.1);
-  --shadow-light-lg: 0 5px 10px rgba(0, 0, 0, 0.15);
-  --shadow-dark-sm: 0 1px 2px rgba(255, 255, 255, 0.05);
-  --shadow-dark-md: 0 3px 6px rgba(255, 255, 255, 0.1);
-  --shadow-dark-lg: 0 5px 10px rgba(255, 255, 255, 0.15);
-
-  --scrollbar-bg: #f4f4f4;
-  --scrollbar-thumb-bg: #bbbbbd;
+  --text-color: #4e5964;
+  --color-white: #fff;
+  --color-black: #000;
+  --table-border-color: #dee2e6;
+  --text-error-color: #d33f3f;
+  --text-input-color: #262626;
+  --color-light-grey: #f4f4f4;
+  --color-grey: #bbbbbd;
+  --color-primary: #4158d0;
+  --background-color: #f4f4f4;
+  --border-color: #ddd;
 
   /* Dark Mode Adjustments */
   @media (prefers-color-scheme: dark) {
-    --background-base-light: #1d1d1d;
-    --background-base-dark: #f7f7f7;
-    --text-base-light: rgba(255, 255, 255, 0.87);
-    --text-base-dark: rgba(0, 0, 0, 0.87);
-    --border-base-light: #353535;
-    --border-base-dark: #dcdcdc;
-
-    --shadow-light-sm: 0 1px 2px rgba(255, 255, 255, 0.05);
-    --shadow-light-md: 0 3px 6px rgba(255, 255, 255, 0.1);
-    --shadow-light-lg: 0 5px 10px rgba(255, 255, 255, 0.15);
-    --shadow-dark-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-dark-md: 0 3px 6px rgba(0, 0, 0, 0.1);
-    --shadow-dark-lg: 0 5px 10px rgba(0, 0, 0, 0.15);
+    --text-color: #cfd2d6;
+    --color-white: #1f1f1f;
+    --color-black: #e0e0e0;
+    --table-border-color: #3a3a3a;
+    --text-error-color: #ff6b6b;
+    --text-input-color: #d4d4d4;
+    --color-light-grey: #2e2e2e;
+    --color-grey: #4a4a4a;
+    --color-primary: #627dff;
+    --background-color: #121212;
+    --border-color: #3a3a3a;
   }
 }

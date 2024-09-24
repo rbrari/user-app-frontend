@@ -45,12 +45,10 @@
 </script>
 
 <template>
-  <div>
-    <UserList
-      :users="userStore.filteredUsers"
-      @onAction="onUserListAction"
-      @onSearch="userStore.searchQuery = $event"
-    />
-    <UserFormModal ref="userFormRef" @onSave="onUserFormAction" />
-  </div>
+  <UserList
+    :users="userStore.filteredUsers"
+    @onAction="onUserListAction"
+    @onSearch="userStore.searchQuery = $event"
+  />
+  <UserFormModal ref="userFormRef" @onSave="onUserFormAction" />
 </template>

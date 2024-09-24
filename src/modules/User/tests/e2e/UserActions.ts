@@ -31,7 +31,7 @@ describe('User Management', () => {
       cy.contains('td', /^John$/)
         .parents('tr')
         .within(() => {
-          cy.contains('delete').click();
+          cy.get('.delete').click();
         });
     });
 

@@ -16,7 +16,8 @@ export default defineConfig(async () => {
       preprocessorOptions: {
         scss: {
           implementation: sass.default,
-          api: 'modern'
+          api: 'modern',
+          additionalData: `@import "@/assets/scss/_mixins.scss";`
         }
       }
     },

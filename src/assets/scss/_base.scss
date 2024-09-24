@@ -17,7 +17,9 @@ html {
 body {
   font-family: Inter, sans-serif;
   color: var(--text-primary);
-  background: var(--color-lighter);
+  background-color: var(--background-color);
   overflow: auto;
   overflow: overlay;
+  padding: 2.4rem;
+  @include scrollbar-on-hover;
 }

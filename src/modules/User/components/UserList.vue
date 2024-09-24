@@ -40,7 +40,6 @@
 
 <template>
   <div id="users-list">
-    <h2>Users</h2>
     <BaseTable
       :columns="columns"
       :rows="users"
@@ -49,7 +48,10 @@
       @onSearch="emits('onSearch', $event)"
     >
       <template #header>
-        <button @click="emits('onAction', { type: UserAction.CREATE })">
+        <button
+          class="base-btn base-btn--primary"
+          @click="emits('onAction', { type: UserAction.CREATE })"
+        >
           + Add User
         </button>
       </template>

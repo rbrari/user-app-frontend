@@ -1,12 +1,3 @@
-<template>
-  <i
-    v-html="icon"
-    class="base-icon"
-    :class="{ 'base-icon--loading': type === 'loading' }"
-    :style="style"
-  />
-</template>
-
 <script setup lang="ts">
   import icons, { type Icon } from '@/components/types/icons';
   import { isDefined } from '@/helpers';
@@ -30,6 +21,10 @@
   }));
 </script>
 
+<template>
+  <i v-html="icon" class="base-icon" :style="style" />
+</template>
+
 <style lang="scss" scoped>
   .base-icon {
     display: inline-flex;
@@ -40,10 +35,6 @@
     svg {
       width: auto;
       height: 100%;
-    }
-
-    &--loading {
-      animation: rotate 1.5s linear infinite;
     }
   }
 </style>
