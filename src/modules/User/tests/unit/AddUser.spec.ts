@@ -1,5 +1,3 @@
-// tests/components/AddUser.spec.ts
-
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import Users from '@/modules/User/Index.vue';
